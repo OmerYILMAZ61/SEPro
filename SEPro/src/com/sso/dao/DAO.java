@@ -55,16 +55,16 @@ public class DAO {
 
 
 
-	public boolean kontrolEt(User user) {
+	public User kontrolEt(User user) {
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(User.class);
 		criteria.add(Restrictions.eq("name", user.getName()));
 		criteria.add(Restrictions.eq("pass", user.getPass()));
 		
 		if(criteria.list().size()>0){
-			return true;
+			return (User) criteria.list().get(0);
 		}
-		return false;
+		return null;
 	}
 	
 	public List<Fiyatlar> fiyatListele(){

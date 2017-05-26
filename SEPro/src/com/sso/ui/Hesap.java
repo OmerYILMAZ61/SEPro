@@ -197,7 +197,10 @@ public class Hesap extends JFrame {
 		btnde.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-
+				for (int i = 0; i < hesapList.size(); i++) {
+					AnaSayfa.kazanc+=hesapList.get(i).getFiyat();
+				}
+				
 				hesapList.clear();
 				
 				String[] columns = { "yemek", "fiyat", };

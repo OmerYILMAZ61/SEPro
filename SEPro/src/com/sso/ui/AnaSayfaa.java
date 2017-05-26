@@ -26,14 +26,8 @@ import javax.swing.JTable;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.CardLayout;
-import java.awt.FlowLayout;
-import javax.swing.JTextArea;
-import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import javax.swing.BoxLayout;
 
-public class AnaSayfa extends JFrame {
+public class AnaSayfaa extends JFrame {
 
 	private JPanel contentPane;
 	private List<Fiyatlar> masa1Hesap = new ArrayList<>();
@@ -53,16 +47,13 @@ public class AnaSayfa extends JFrame {
 	private Hesap hesap7 = new Hesap();
 	private Hesap hesap8 = new Hesap();
 	JButton masa1, masa2, masa3, masa4, masa5, masa6, masa7, masa8;
-	
-	private User userK = Giris.getInstance().getUserG();
+	private User userK;
 
-	static AnaSayfa uniqueInstance;
-	private JButton btnk;
-	static float kazanc;
+	static AnaSayfaa uniqueInstance;
 
-	public static AnaSayfa getInstance() {
+	public static AnaSayfaa getInstance() {
 		if (uniqueInstance == null) {
-			uniqueInstance = new AnaSayfa();
+			uniqueInstance = new AnaSayfaa();
 		}
 		return uniqueInstance;
 
@@ -71,10 +62,10 @@ public class AnaSayfa extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AnaSayfa() {
-		
+	public AnaSayfaa() {
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 447, 284);
+		setBounds(100, 100, 447, 160);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -175,101 +166,44 @@ public class AnaSayfa extends JFrame {
 		});
 		masa8.setBackground(Color.WHITE);
 		masa8.setForeground(Color.BLACK);
-		
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		
-		btnk = new JButton("\u00C7\u0131k");
-		btnk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				userK = null;
-				Giris.getInstance().setVisible(true);
-				
-			}
-		});
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(masa1)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(masa2, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(masa3, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(masa4, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(masa5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(masa6, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup().addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup().addComponent(masa1)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(masa2, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(masa3, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED).addComponent(masa4,
+												GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(masa7, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(masa8, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)))))
-					.addContainerGap(125, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(19)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(294, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(332, Short.MAX_VALUE)
-					.addComponent(btnk))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(masa1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(masa2, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+										.addComponent(masa5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+												Short.MAX_VALUE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(masa6, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(masa7, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(masa8, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+										.addGap(4)))
+						.addContainerGap(125, Short.MAX_VALUE)));
+		gl_contentPane.setVerticalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
+				.createSequentialGroup()
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(masa1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+								.addComponent(masa2, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
 						.addComponent(masa3, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
 						.addComponent(masa4, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+				.addPreferredGap(ComponentPlacement.RELATED)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(masa5, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
 						.addComponent(masa6, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
 						.addComponent(masa7, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
 						.addComponent(masa8, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
-						.addComponent(panel_1, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(46)
-					.addComponent(btnk))
-		);
-		
-		panel_1.setLayout(new CardLayout(0, 0));
-		
-		System.out.println(userK.getName());
-		System.out.println(userK.getYetki());
-		
-		
-		if(userK.getYetki()==1){
-		JTextArea textArea = new JTextArea();
-		panel_1.add(textArea, "name_39884557800631");
-	
-		panel.setLayout(new CardLayout(0, 0));
-	
-	
-		JButton btnHesapla = new JButton("Hesapla");
-		btnHesapla.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			textArea.setText(String.valueOf(AnaSayfa.kazanc));	
-			}
-		});
-		panel.add(btnHesapla, "name_39839831611297");
-		}
+				.addContainerGap(12, Short.MAX_VALUE)));
 		contentPane.setLayout(gl_contentPane);
 	}
 
@@ -364,4 +298,5 @@ public class AnaSayfa extends JFrame {
 	public void setUserK(User userK) {
 		this.userK = userK;
 	}
+
 }

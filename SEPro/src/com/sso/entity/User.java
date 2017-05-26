@@ -12,6 +12,8 @@ public class User {
 	private String name;
 	
 	private String pass;
+	
+	private int yetki;
 
 	public int getId() {
 		return id;
@@ -35,6 +37,14 @@ public class User {
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public int getYetki() {
+		return yetki;
+	}
+
+	public void setYetki(int yetki) {
+		this.yetki = yetki;
 	}
 	
 }

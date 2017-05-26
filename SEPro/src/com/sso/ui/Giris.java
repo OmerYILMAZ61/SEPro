@@ -5,6 +5,7 @@ import java.awt.Frame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import com.sso.dao.DAO;
@@ -24,8 +25,20 @@ public class Giris extends JFrame {
 	
 	private JPanel contentPane;
 	private JTextField adText;
-	private JTextField sifreText;
+	private JPasswordField sifreText;
+	private User userG = null;
 
+	static Giris uniqueInstance;
+
+	public static Giris getInstance() {
+		if (uniqueInstance == null) {
+			uniqueInstance = new Giris();
+		}
+		return uniqueInstance;
+
+	}
+	
+	
 	/**
 	 * Launch the application.
 	 */
@@ -33,8 +46,8 @@ public class Giris extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Frame frame = new Giris();
-					frame.setVisible(true);
+					
+					Giris.getInstance().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -47,20 +60,20 @@ public class Giris extends JFrame {
 	 */
 	public Giris() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 209, 184);
+		setBounds(100, 100, 236, 184);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblAd = new JLabel("ad\u0131");
+		JLabel lblAd = new JLabel("Kullan\u0131c\u0131");
 		
-		JLabel lblSoyad = new JLabel("soyad\u0131");
+		JLabel lblSoyad = new JLabel("\u015Eifre");
 		
 		adText = new JTextField();
 		adText.setColumns(10);
 		
-		sifreText = new JTextField();
+		sifreText = new JPasswordField();
 		sifreText.setColumns(10);
 		
 		JButton girisButton = new JButton("Giris");
@@ -70,11 +83,15 @@ public class Giris extends JFrame {
 				User user = new User();
 				user.setName(adText.getText());
 				user.setPass(sifreText.getText());
+				Giris.getInstance().userG= DAO.getInstance().kontrolEt(user);
 				
-				if(DAO.getInstance().kontrolEt(user)){
+				if(Giris.getInstance().userG!=null){
+					AnaSayfa.getInstance().setUserK(userG);
 					
-					AnaSayfa.getInstance().setVisible(true);
-					setVisible(false);
+					AnaSayfa anaSayfa = new AnaSayfa();
+					AnaSayfa.uniqueInstance = anaSayfa;
+					anaSayfa.setVisible(true);
+					Giris.getInstance().setVisible(false);
 				}
 				
 			}
@@ -113,4 +130,14 @@ public class Giris extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
+
+	public User getUserG() {
+		return userG;
+	}
+
+	public void setUserG(User userG) {
+		this.userG = userG;
+	}
+	
+	
 }
