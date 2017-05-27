@@ -4,7 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.sso.dao.DAO;
 import com.sso.entity.Fiyatlar;
+import com.sso.entity.MasaHesap;
 import com.sso.entity.User;
 
 import javax.swing.GroupLayout;
@@ -36,22 +38,22 @@ import javax.swing.BoxLayout;
 public class AnaSayfa extends JFrame {
 
 	private JPanel contentPane;
-	private List<Fiyatlar> masa1Hesap = new ArrayList<>();
-	private List<Fiyatlar> masa2Hesap = new ArrayList<>();
-	private List<Fiyatlar> masa3Hesap = new ArrayList<>();
-	private List<Fiyatlar> masa4Hesap = new ArrayList<>();
-	private List<Fiyatlar> masa5Hesap = new ArrayList<>();
-	private List<Fiyatlar> masa6Hesap = new ArrayList<>();
-	private List<Fiyatlar> masa7Hesap = new ArrayList<>();
-	private List<Fiyatlar> masa8Hesap = new ArrayList<>();
-	private Hesap hesap1 = new Hesap();
-	private Hesap hesap2 = new Hesap();
-	private Hesap hesap3 = new Hesap();
-	private Hesap hesap4 = new Hesap();
-	private Hesap hesap5 = new Hesap();
-	private Hesap hesap6 = new Hesap();
-	private Hesap hesap7 = new Hesap();
-	private Hesap hesap8 = new Hesap();
+	private List<MasaHesap> masa1Hesap = DAO.getInstance().getMasaHesap(1);
+	private List<MasaHesap> masa2Hesap = DAO.getInstance().getMasaHesap(2);
+	private List<MasaHesap> masa3Hesap = DAO.getInstance().getMasaHesap(3);
+	private List<MasaHesap> masa4Hesap = DAO.getInstance().getMasaHesap(4);
+	private List<MasaHesap> masa5Hesap = DAO.getInstance().getMasaHesap(5);
+	private List<MasaHesap> masa6Hesap = DAO.getInstance().getMasaHesap(6);
+	private List<MasaHesap> masa7Hesap = DAO.getInstance().getMasaHesap(7);
+	private List<MasaHesap> masa8Hesap = DAO.getInstance().getMasaHesap(8);
+	private Hesap hesap1 = new Hesap(1,masa1Hesap);
+	private Hesap hesap2 = new Hesap(2,masa2Hesap);
+	private Hesap hesap3 = new Hesap(3,masa3Hesap);
+	private Hesap hesap4 = new Hesap(4,masa4Hesap);
+	private Hesap hesap5 = new Hesap(5,masa5Hesap);
+	private Hesap hesap6 = new Hesap(6,masa6Hesap);
+	private Hesap hesap7 = new Hesap(7,masa7Hesap);
+	private Hesap hesap8 = new Hesap(8,masa8Hesap);
 	JButton masa1, masa2, masa3, masa4, masa5, masa6, masa7, masa8;
 	
 	private User userK = Giris.getInstance().getUserG();
@@ -83,14 +85,21 @@ public class AnaSayfa extends JFrame {
 		masa1 = new JButton("Masa 1");
 		masa1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				
+				
+				hesap1.setHesapList(masa1Hesap);
 				hesap1.setMasaNo(1);
 				hesap1.setVisible(true);
-				hesap1.setHesapList(masa1Hesap);
-
+				
 			}
 		});
+		
+		if(masa1Hesap.size()<1){
 		masa1.setBackground(Color.WHITE);
+		}
+		else{
+			masa1.setBackground(Color.RED);
+		}
 		masa1.setForeground(Color.BLACK);
 
 		masa2 = new JButton("Masa 2");
@@ -103,7 +112,12 @@ public class AnaSayfa extends JFrame {
 
 			}
 		});
-		masa2.setBackground(Color.WHITE);
+		if(masa2Hesap.size()<1){
+			masa2.setBackground(Color.WHITE);
+			}
+			else{
+				masa2.setBackground(Color.RED);
+			}
 		masa2.setForeground(Color.BLACK);
 
 		masa3 = new JButton("Masa 3");
@@ -116,7 +130,12 @@ public class AnaSayfa extends JFrame {
 
 			}
 		});
-		masa3.setBackground(Color.WHITE);
+		if(masa3Hesap.size()<1){
+			masa3.setBackground(Color.WHITE);
+			}
+			else{
+				masa3.setBackground(Color.RED);
+			}
 		masa3.setForeground(Color.BLACK);
 
 		masa4 = new JButton("Masa 4");
@@ -129,7 +148,12 @@ public class AnaSayfa extends JFrame {
 
 			}
 		});
-		masa4.setBackground(Color.WHITE);
+		if(masa4Hesap.size()<1){
+			masa4.setBackground(Color.WHITE);
+			}
+			else{
+				masa4.setBackground(Color.RED);
+			}
 		masa4.setForeground(Color.BLACK);
 
 		masa5 = new JButton("Masa 5");
@@ -140,7 +164,12 @@ public class AnaSayfa extends JFrame {
 				hesap5.setVisible(true);
 			}
 		});
-		masa5.setBackground(Color.WHITE);
+		if(masa5Hesap.size()<1){
+			masa5.setBackground(Color.WHITE);
+			}
+			else{
+				masa5.setBackground(Color.RED);
+			}
 		masa5.setForeground(Color.BLACK);
 
 		masa6 = new JButton("Masa 6");
@@ -151,7 +180,12 @@ public class AnaSayfa extends JFrame {
 				hesap6.setVisible(true);
 			}
 		});
-		masa6.setBackground(Color.WHITE);
+		if(masa6Hesap.size()<1){
+			masa6.setBackground(Color.WHITE);
+			}
+			else{
+				masa6.setBackground(Color.RED);
+			}
 		masa6.setForeground(Color.BLACK);
 
 		masa7 = new JButton("Masa 7");
@@ -162,7 +196,12 @@ public class AnaSayfa extends JFrame {
 				hesap7.setVisible(true);
 			}
 		});
-		masa7.setBackground(Color.WHITE);
+		if(masa7Hesap.size()<1){
+			masa7.setBackground(Color.WHITE);
+			}
+			else{
+				masa7.setBackground(Color.RED);
+			}
 		masa7.setForeground(Color.BLACK);
 
 		masa8 = new JButton("Masa 8");
@@ -173,7 +212,12 @@ public class AnaSayfa extends JFrame {
 				hesap8.setVisible(true);
 			}
 		});
-		masa8.setBackground(Color.WHITE);
+		if(masa8Hesap.size()<1){
+			masa8.setBackground(Color.WHITE);
+			}
+			else{
+				masa8.setBackground(Color.RED);
+			}
 		masa8.setForeground(Color.BLACK);
 		
 		
@@ -293,67 +337,67 @@ public class AnaSayfa extends JFrame {
 		});
 	}
 
-	public List<Fiyatlar> getMasa1Hesap() {
+	public List<MasaHesap> getMasa1Hesap() {
 		return masa1Hesap;
 	}
 
-	public void setMasa1Hesap(List<Fiyatlar> masa1Hesap) {
+	public void setMasa1Hesap(List<MasaHesap> masa1Hesap) {
 		this.masa1Hesap = masa1Hesap;
 	}
 
-	public List<Fiyatlar> getMasa2Hesap() {
+	public List<MasaHesap> getMasa2Hesap() {
 		return masa2Hesap;
 	}
 
-	public void setMasa2Hesap(List<Fiyatlar> masa2Hesap) {
+	public void setMasa2Hesap(List<MasaHesap> masa2Hesap) {
 		this.masa2Hesap = masa2Hesap;
 	}
 
-	public List<Fiyatlar> getMasa3Hesap() {
+	public List<MasaHesap> getMasa3Hesap() {
 		return masa3Hesap;
 	}
 
-	public void setMasa3Hesap(List<Fiyatlar> masa3Hesap) {
+	public void setMasa3Hesap(List<MasaHesap> masa3Hesap) {
 		this.masa3Hesap = masa3Hesap;
 	}
 
-	public List<Fiyatlar> getMasa4Hesap() {
+	public List<MasaHesap> getMasa4Hesap() {
 		return masa4Hesap;
 	}
 
-	public void setMasa4Hesap(List<Fiyatlar> masa4Hesap) {
+	public void setMasa4Hesap(List<MasaHesap> masa4Hesap) {
 		this.masa4Hesap = masa4Hesap;
 	}
 
-	public List<Fiyatlar> getMasa5Hesap() {
+	public List<MasaHesap> getMasa5Hesap() {
 		return masa5Hesap;
 	}
 
-	public void setMasa5Hesap(List<Fiyatlar> masa5Hesap) {
+	public void setMasa5Hesap(List<MasaHesap> masa5Hesap) {
 		this.masa5Hesap = masa5Hesap;
 	}
 
-	public List<Fiyatlar> getMasa6Hesap() {
+	public List<MasaHesap> getMasa6Hesap() {
 		return masa6Hesap;
 	}
 
-	public void setMasa6Hesap(List<Fiyatlar> masa6Hesap) {
+	public void setMasa6Hesap(List<MasaHesap> masa6Hesap) {
 		this.masa6Hesap = masa6Hesap;
 	}
 
-	public List<Fiyatlar> getMasa7Hesap() {
+	public List<MasaHesap> getMasa7Hesap() {
 		return masa7Hesap;
 	}
 
-	public void setMasa7Hesap(List<Fiyatlar> masa7Hesap) {
+	public void setMasa7Hesap(List<MasaHesap> masa7Hesap) {
 		this.masa7Hesap = masa7Hesap;
 	}
 
-	public List<Fiyatlar> getMasa8Hesap() {
+	public List<MasaHesap> getMasa8Hesap() {
 		return masa8Hesap;
 	}
 
-	public void setMasa8Hesap(List<Fiyatlar> masa8Hesap) {
+	public void setMasa8Hesap(List<MasaHesap> masa8Hesap) {
 		this.masa8Hesap = masa8Hesap;
 	}
 

@@ -11,6 +11,7 @@ import javax.swing.table.TableModel;
 
 import com.sso.dao.DAO;
 import com.sso.entity.Fiyatlar;
+import com.sso.entity.MasaHesap;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -25,7 +26,7 @@ import javax.swing.JTextArea;
 
 public class Hesap extends JFrame {
 
-	private List<Fiyatlar> hesapList = new ArrayList<>();
+	private static List<MasaHesap> hesapList = new ArrayList<>();
 	private JPanel contentPane;
 	private JTable table;
 	private JButton btnEkle;
@@ -33,20 +34,24 @@ public class Hesap extends JFrame {
 	private JButton btnGeri;
 	JTextArea hesaplaArea;
 	private JButton btnde;
-	private int masaNo;
+	private static int masaNo;
+
 
 
 	/**
 	 * Create the frame.
+	 * @param masa1Hesap2 
 	 */
-	public Hesap() {
+	public Hesap(int masaNo, List<MasaHesap> masa1Hesap) {
+		this.masaNo = masaNo;
+		this.hesapList=masa1Hesap;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 
-		
+	
 		
 		table = new JTable();
 		
@@ -74,8 +79,13 @@ public class Hesap extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				Fiyatlar yemek = yemekFiyatiBul((String) comboBox.getSelectedItem());
+				MasaHesap masaHesap = new MasaHesap();
+				masaHesap.setMasaNo(masaNo);
+				masaHesap.setFiyat(yemek.getFiyat());
+				masaHesap.setYemek(yemek.getYemek());
 
-				hesapList.add(yemek);
+				DAO.getInstance().add(masaHesap);
+				hesapList = DAO.getInstance().getMasaHesap(masaNo);
 
 
 				String[] columns = { "yemek", "fiyat", };
@@ -198,6 +208,14 @@ public class Hesap extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				for (int i = 0; i < hesapList.size(); i++) {
+					MasaHesap masaHesap = new MasaHesap();
+					masaHesap.setId(hesapList.get(i).getId());
+					DAO.getInstance().ode(masaHesap);
+					
+				}
+				
+				
+				for (int i = 0; i < hesapList.size(); i++) {
 					AnaSayfa.kazanc+=hesapList.get(i).getFiyat();
 				}
 				
@@ -257,12 +275,12 @@ public class Hesap extends JFrame {
 		return sonuc;
 	}
 
-	public List<Fiyatlar> getHesapList() {
+	public List<MasaHesap> getHesapList() {
 		return hesapList;
 	}
 
-	public void setHesapList(List<Fiyatlar> hesapList) {
-		this.hesapList = hesapList;
+	public void setHesapList(List<MasaHesap> hesapList) {
+		Hesap.hesapList = hesapList;
 	}
 
 	public int getMasaNo() {

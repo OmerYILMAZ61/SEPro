@@ -19,6 +19,7 @@
 
 		<mapping class="com.sso.entity.User" />
 		<mapping class="com.sso.entity.Fiyatlar" />
+		<mapping class="com.sso.entity.MasaHesap" />
 		
 	
 

@@ -15,6 +15,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -88,9 +89,10 @@ public class Giris extends JFrame {
 				if(Giris.getInstance().userG!=null){
 					AnaSayfa.getInstance().setUserK(userG);
 					
-					AnaSayfa anaSayfa = new AnaSayfa();
-					AnaSayfa.uniqueInstance = anaSayfa;
-					anaSayfa.setVisible(true);
+//					AnaSayfa anaSayfa = new AnaSayfa();
+//					AnaSayfa.uniqueInstance = anaSayfa;
+					
+					AnaSayfa.getInstance().setVisible(true);
 					Giris.getInstance().setVisible(false);
 				}
 				

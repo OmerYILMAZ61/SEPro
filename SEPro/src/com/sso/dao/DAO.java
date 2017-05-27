@@ -1,5 +1,6 @@
 package com.sso.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,11 +13,13 @@ import org.hibernate.criterion.Restrictions;
 
 import com.sso.dao.DAO;
 import com.sso.entity.Fiyatlar;
+import com.sso.entity.MasaHesap;
 import com.sso.entity.User;
 
 public class DAO {
 	
 	static DAO uniqueInstance;
+	MasaHesap Mfiyatlar;
 	
 	public static DAO getInstance(){
 		if(uniqueInstance==null){
@@ -76,5 +79,50 @@ public class DAO {
 		return list;
 		
 	}
+
+
+
+	public List<MasaHesap> getMasaHesap(int i) {
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(MasaHesap.class);
+		List<MasaHesap> list = new ArrayList<>();
+		List<MasaHesap> listMasa = criteria.list();
+		for (int j = 0; j < listMasa.size(); j++) {
+			if(listMasa.get(j).getMasaNo()==i){
+				Mfiyatlar = new MasaHesap();
+				Mfiyatlar.setFiyat(listMasa.get(j).getFiyat());
+				Mfiyatlar.setYemek(listMasa.get(j).getYemek());
+				Mfiyatlar.setId(listMasa.get(j).getId());
+				list.add(Mfiyatlar);
+			}
+		}
+		
+		return list;
+	}
+
+
+
+	public void ode(MasaHesap masaHesap) {
+		
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		
+		try {
+			
+				tx = session.beginTransaction();
+				session.delete(masaHesap);;
+				tx.commit();
+			
+			
+		} catch (Exception e) {
+			if(tx!=null)
+				tx.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+	}
+
 	
 }
