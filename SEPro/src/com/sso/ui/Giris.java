@@ -89,8 +89,8 @@ public class Giris extends JFrame {
 				if(Giris.getInstance().userG!=null){
 					AnaSayfa.getInstance().setUserK(userG);
 					
-//					AnaSayfa anaSayfa = new AnaSayfa();
-//					AnaSayfa.uniqueInstance = anaSayfa;
+					AnaSayfa anaSayfa = new AnaSayfa();
+					AnaSayfa.uniqueInstance = anaSayfa;
 					
 					AnaSayfa.getInstance().setVisible(true);
 					Giris.getInstance().setVisible(false);

@@ -19,6 +19,7 @@ import javax.swing.JPopupMenu;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,16 +47,17 @@ public class AnaSayfa extends JFrame {
 	private List<MasaHesap> masa6Hesap = DAO.getInstance().getMasaHesap(6);
 	private List<MasaHesap> masa7Hesap = DAO.getInstance().getMasaHesap(7);
 	private List<MasaHesap> masa8Hesap = DAO.getInstance().getMasaHesap(8);
-	private Hesap hesap1 = new Hesap(1,masa1Hesap);
-	private Hesap hesap2 = new Hesap(2,masa2Hesap);
-	private Hesap hesap3 = new Hesap(3,masa3Hesap);
-	private Hesap hesap4 = new Hesap(4,masa4Hesap);
-	private Hesap hesap5 = new Hesap(5,masa5Hesap);
-	private Hesap hesap6 = new Hesap(6,masa6Hesap);
-	private Hesap hesap7 = new Hesap(7,masa7Hesap);
-	private Hesap hesap8 = new Hesap(8,masa8Hesap);
+	private Hesap hesap1 = new Hesap(1, masa1Hesap);
+	private Hesap hesap2 = new Hesap(2, masa2Hesap);
+	private Hesap hesap3 = new Hesap(3, masa3Hesap);
+	private Hesap hesap4 = new Hesap(4, masa4Hesap);
+	private Hesap hesap5 = new Hesap(5, masa5Hesap);
+	private Hesap hesap6 = new Hesap(6, masa6Hesap);
+	private Hesap hesap7 = new Hesap(7, masa7Hesap);
+	private Hesap hesap8 = new Hesap(8, masa8Hesap);
 	JButton masa1, masa2, masa3, masa4, masa5, masa6, masa7, masa8;
-	
+	JTextArea textAreaMouse;
+
 	private User userK = Giris.getInstance().getUserG();
 
 	static AnaSayfa uniqueInstance;
@@ -74,7 +76,7 @@ public class AnaSayfa extends JFrame {
 	 * Create the frame.
 	 */
 	public AnaSayfa() {
-		
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 447, 284);
 		contentPane = new JPanel();
@@ -85,19 +87,51 @@ public class AnaSayfa extends JFrame {
 		masa1 = new JButton("Masa 1");
 		masa1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				
+
 				hesap1.setHesapList(masa1Hesap);
 				hesap1.setMasaNo(1);
 				hesap1.setVisible(true);
-				
+
 			}
 		});
-		
-		if(masa1Hesap.size()<1){
-		masa1.setBackground(Color.WHITE);
-		}
-		else{
+
+		masa1.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				textAreaMouse.setText("");
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				float sonuc = fiyatHesapla(masa1Hesap);
+				textAreaMouse.setText(String.valueOf(sonuc));
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		if (masa1Hesap.size() < 1) {
+			masa1.setBackground(Color.WHITE);
+		} else {
 			masa1.setBackground(Color.RED);
 		}
 		masa1.setForeground(Color.BLACK);
@@ -112,12 +146,46 @@ public class AnaSayfa extends JFrame {
 
 			}
 		});
-		if(masa2Hesap.size()<1){
+
+		masa2.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				textAreaMouse.setText("");
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				float sonuc = fiyatHesapla(masa2Hesap);
+				textAreaMouse.setText(String.valueOf(sonuc));
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+		if (masa2Hesap.size() < 1) {
 			masa2.setBackground(Color.WHITE);
-			}
-			else{
-				masa2.setBackground(Color.RED);
-			}
+		} else {
+			masa2.setBackground(Color.RED);
+		}
 		masa2.setForeground(Color.BLACK);
 
 		masa3 = new JButton("Masa 3");
@@ -130,12 +198,44 @@ public class AnaSayfa extends JFrame {
 
 			}
 		});
-		if(masa3Hesap.size()<1){
+		masa3.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				textAreaMouse.setText("");
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				float sonuc = fiyatHesapla(masa3Hesap);
+				textAreaMouse.setText(String.valueOf(sonuc));
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		if (masa3Hesap.size() < 1) {
 			masa3.setBackground(Color.WHITE);
-			}
-			else{
-				masa3.setBackground(Color.RED);
-			}
+		} else {
+			masa3.setBackground(Color.RED);
+		}
 		masa3.setForeground(Color.BLACK);
 
 		masa4 = new JButton("Masa 4");
@@ -148,12 +248,44 @@ public class AnaSayfa extends JFrame {
 
 			}
 		});
-		if(masa4Hesap.size()<1){
+		masa4.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				textAreaMouse.setText("");
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				float sonuc = fiyatHesapla(masa4Hesap);
+				textAreaMouse.setText(String.valueOf(sonuc));
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		if (masa4Hesap.size() < 1) {
 			masa4.setBackground(Color.WHITE);
-			}
-			else{
-				masa4.setBackground(Color.RED);
-			}
+		} else {
+			masa4.setBackground(Color.RED);
+		}
 		masa4.setForeground(Color.BLACK);
 
 		masa5 = new JButton("Masa 5");
@@ -164,12 +296,44 @@ public class AnaSayfa extends JFrame {
 				hesap5.setVisible(true);
 			}
 		});
-		if(masa5Hesap.size()<1){
+		masa5.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				textAreaMouse.setText("");
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				float sonuc = fiyatHesapla(masa5Hesap);
+				textAreaMouse.setText(String.valueOf(sonuc));
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		if (masa5Hesap.size() < 1) {
 			masa5.setBackground(Color.WHITE);
-			}
-			else{
-				masa5.setBackground(Color.RED);
-			}
+		} else {
+			masa5.setBackground(Color.RED);
+		}
 		masa5.setForeground(Color.BLACK);
 
 		masa6 = new JButton("Masa 6");
@@ -180,12 +344,44 @@ public class AnaSayfa extends JFrame {
 				hesap6.setVisible(true);
 			}
 		});
-		if(masa6Hesap.size()<1){
+		masa6.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				textAreaMouse.setText("");
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				float sonuc = fiyatHesapla(masa6Hesap);
+				textAreaMouse.setText(String.valueOf(sonuc));
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		if (masa6Hesap.size() < 1) {
 			masa6.setBackground(Color.WHITE);
-			}
-			else{
-				masa6.setBackground(Color.RED);
-			}
+		} else {
+			masa6.setBackground(Color.RED);
+		}
 		masa6.setForeground(Color.BLACK);
 
 		masa7 = new JButton("Masa 7");
@@ -196,12 +392,44 @@ public class AnaSayfa extends JFrame {
 				hesap7.setVisible(true);
 			}
 		});
-		if(masa7Hesap.size()<1){
+		masa7.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				textAreaMouse.setText("");
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				float sonuc = fiyatHesapla(masa7Hesap);
+				textAreaMouse.setText(String.valueOf(sonuc));
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		if (masa7Hesap.size() < 1) {
 			masa7.setBackground(Color.WHITE);
-			}
-			else{
-				masa7.setBackground(Color.RED);
-			}
+		} else {
+			masa7.setBackground(Color.RED);
+		}
 		masa7.setForeground(Color.BLACK);
 
 		masa8 = new JButton("Masa 8");
@@ -212,107 +440,153 @@ public class AnaSayfa extends JFrame {
 				hesap8.setVisible(true);
 			}
 		});
-		if(masa8Hesap.size()<1){
+		masa8.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				textAreaMouse.setText("");
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				float sonuc = fiyatHesapla(masa8Hesap);
+				textAreaMouse.setText(String.valueOf(sonuc));
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		if (masa8Hesap.size() < 1) {
 			masa8.setBackground(Color.WHITE);
-			}
-			else{
-				masa8.setBackground(Color.RED);
-			}
+		} else {
+			masa8.setBackground(Color.RED);
+		}
 		masa8.setForeground(Color.BLACK);
-		
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.WHITE);
-		
+
 		btnk = new JButton("\u00C7\u0131k");
 		btnk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				userK = null;
 				Giris.getInstance().setVisible(true);
-				
+
 			}
 		});
+
+		textAreaMouse = new JTextArea();
 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(masa1)
+							.addContainerGap()
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(masa5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(masa1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(masa2, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(masa3, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(masa4, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(masa5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(masa6, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(masa7, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+									.addComponent(masa2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(masa8, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)))))
-					.addContainerGap(125, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(19)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(294, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-					.addContainerGap(332, Short.MAX_VALUE)
-					.addComponent(btnk))
+									.addComponent(masa3, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(masa4, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(masa6, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
+										.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+											.addComponent(masa7, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(masa8, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)))))
+							.addPreferredGap(ComponentPlacement.RELATED))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(20)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 184, Short.MAX_VALUE)))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(18)
+							.addComponent(textAreaMouse, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(27)
+							.addComponent(btnk)))
+					.addGap(9))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(masa1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(masa2, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(masa3, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(masa4, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(masa3, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+							.addComponent(masa2, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(masa1, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(masa4, GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+								.addComponent(textAreaMouse, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(masa5, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(masa6, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
 						.addComponent(masa7, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(masa8, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+						.addComponent(masa8, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+						.addComponent(masa5, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+						.addComponent(masa6, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE))
+					.addGap(81)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel, GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
-						.addComponent(panel_1, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(46)
-					.addComponent(btnk))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addComponent(btnk)
+							.addContainerGap())
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+								.addComponent(panel, GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+								.addGap(32)))))
 		);
-		
+
 		panel_1.setLayout(new CardLayout(0, 0));
-		
+
 		System.out.println(userK.getName());
 		System.out.println(userK.getYetki());
-		
-		
-		if(userK.getYetki()==1){
-		JTextArea textArea = new JTextArea();
-		panel_1.add(textArea, "name_39884557800631");
-	
-		panel.setLayout(new CardLayout(0, 0));
-	
-	
-		JButton btnHesapla = new JButton("Hesapla");
-		btnHesapla.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			textArea.setText(String.valueOf(AnaSayfa.kazanc));	
-			}
-		});
-		panel.add(btnHesapla, "name_39839831611297");
+
+		if (userK.getYetki() == 1) {
+			JTextArea textArea = new JTextArea();
+			panel_1.add(textArea, "name_39884557800631");
+
+			panel.setLayout(new CardLayout(0, 0));
+
+			JButton btnHesapla = new JButton("Hesapla");
+			btnHesapla.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					textArea.setText(String.valueOf(AnaSayfa.kazanc));
+				}
+			});
+			panel.add(btnHesapla, "name_39839831611297");
 		}
 		contentPane.setLayout(gl_contentPane);
 	}
@@ -407,5 +681,13 @@ public class AnaSayfa extends JFrame {
 
 	public void setUserK(User userK) {
 		this.userK = userK;
+	}
+
+	private float fiyatHesapla(List<MasaHesap> masa1Hesap) {
+		float k = 0;
+		for (int i = 0; i < masa1Hesap.size(); i++) {
+			k += masa1Hesap.get(i).getFiyat();
+		}
+		return k;
 	}
 }
