@@ -102,6 +102,80 @@ public class Hesap extends JFrame {
 				table.setModel(dataModel);
 				hesaplaArea.setText("Hesabýnýz = " + hesapla());
 
+				
+				if(masaNo == 1 ){
+					AnaSayfa.getInstance().setMasa1Hesap(hesapList);
+					if (hesapList.size()<1) {
+						AnaSayfa.getInstance().masa1.setBackground(Color.WHITE);
+					}else{
+						AnaSayfa.getInstance().masa1.setBackground(Color.RED);
+					}
+					
+					
+				}else if (masaNo==2) {
+					AnaSayfa.getInstance().setMasa2Hesap(hesapList);
+					if (hesapList.size()<1) {
+						AnaSayfa.getInstance().masa2.setBackground(Color.WHITE);
+					}else{
+						AnaSayfa.getInstance().masa2.setBackground(Color.RED);
+					}
+					
+				}
+				else if (masaNo==3) {
+					if (hesapList.size()<1) {
+						AnaSayfa.getInstance().masa3.setBackground(Color.WHITE);
+					}else{
+						AnaSayfa.getInstance().masa3.setBackground(Color.RED);
+					}
+					
+					AnaSayfa.getInstance().setMasa3Hesap(hesapList);
+					
+				}
+				else if (masaNo==4) {
+					AnaSayfa.getInstance().setMasa4Hesap(hesapList);
+					if (hesapList.size()<1) {
+						AnaSayfa.getInstance().masa4.setBackground(Color.WHITE);
+					}else{
+						AnaSayfa.getInstance().masa4.setBackground(Color.RED);
+					}
+					
+				}
+				else if (masaNo==5) {
+					AnaSayfa.getInstance().setMasa5Hesap(hesapList);
+					if (hesapList.size()<1) {
+						AnaSayfa.getInstance().masa5.setBackground(Color.WHITE);
+					}else{
+						AnaSayfa.getInstance().masa5.setBackground(Color.RED);
+					}
+					
+				}
+				else if (masaNo==6) {
+					AnaSayfa.getInstance().setMasa6Hesap(hesapList);
+					if (hesapList.size()<1) {
+						AnaSayfa.getInstance().masa6.setBackground(Color.WHITE);
+					}else{
+						AnaSayfa.getInstance().masa6.setBackground(Color.RED);
+					}
+					
+				}
+				else if (masaNo==7) {
+					AnaSayfa.getInstance().setMasa7Hesap(hesapList);
+					if (hesapList.size()<1) {
+						AnaSayfa.getInstance().masa7.setBackground(Color.WHITE);
+					}else{
+						AnaSayfa.getInstance().masa7.setBackground(Color.RED);
+					}
+					
+				}
+				else if (masaNo==8) {
+					AnaSayfa.getInstance().setMasa8Hesap(hesapList);
+					if (hesapList.size()<1) {
+						AnaSayfa.getInstance().masa8.setBackground(Color.WHITE);
+					}else{
+						AnaSayfa.getInstance().masa8.setBackground(Color.RED);
+					}
+					
+				}
 			}
 
 			private Fiyatlar yemekFiyatiBul(String object) {
@@ -120,7 +194,6 @@ public class Hesap extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				setVisible(false);
-				
 				
 				if(masaNo == 1 ){
 					AnaSayfa.getInstance().setMasa1Hesap(hesapList);
@@ -197,6 +270,8 @@ public class Hesap extends JFrame {
 				}
 			
 				
+			
+				
 			}
 		});
 
@@ -236,6 +311,9 @@ public class Hesap extends JFrame {
 				
 				hesaplaArea.setText("Hesabýnýz = " + hesapla());
 
+				
+			
+				
 			}
 		});
 
